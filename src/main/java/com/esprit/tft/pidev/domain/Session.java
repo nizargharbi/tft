@@ -3,6 +3,8 @@ package com.esprit.tft.pidev.domain;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -10,6 +12,7 @@ import javax.persistence.*;
  *
  */
 @Entity
+
 
 public class Session implements Serializable {
 
@@ -20,6 +23,13 @@ public class Session implements Serializable {
 	private String venue;
 	private String openingdate;
 	private String closingdate;
+	@ManyToMany
+	@JoinTable(
+			name="session_referee",
+			joinColumns = @JoinColumn(name="id_session"),
+			inverseJoinColumns = @JoinColumn(name="id_refree")
+		)
+	private List<Refree> refrees;
 	private static final long serialVersionUID = 1L;
 
 	public Session() {
@@ -52,6 +62,13 @@ public class Session implements Serializable {
 
 	public void setClosingdate(String closingdate) {
 		this.closingdate = closingdate;
+	}
+	
+	public List<Refree> getRefrees() {
+		return refrees;
+	}
+	public void setRefrees(List<Refree> refrees) {
+		this.refrees = refrees;
 	}
    
 }

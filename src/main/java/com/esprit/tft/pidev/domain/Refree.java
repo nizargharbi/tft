@@ -3,6 +3,7 @@ package com.esprit.tft.pidev.domain;
 import java.io.Serializable;
 import java.lang.String;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -18,6 +19,9 @@ public class Refree extends User implements Serializable {
 	private String grade;
 	@OneToMany(mappedBy="refree")
 	private Collection<Game> games;
+	
+	@ManyToMany(mappedBy="refrees")
+	private List<Session> sessions;
 	
 	public String getGrade() {
 		return grade;
@@ -65,5 +69,13 @@ public class Refree extends User implements Serializable {
 	public void setGarde(String garde) {
 		this.grade = garde;
 	}
+
+	public List<Session> getSessions() {
+		return sessions;
+	}
+	public void setSessions(List<Session> sessions) {
+		this.sessions = sessions;
+	}
+	
    
 }
