@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -15,16 +17,48 @@ import javax.persistence.*;
 
 public class Game implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Integer idgame;
-
+	private Date Date;
 	private String type;
+	private Stadium stadium;
+	private List<Player> players;
+	
+	
+	
+	
+	
+	
+	
+	public Date getDate() {
+		return Date;
+	}
+	public void setDate(Date date) {
+		Date = date;
+	}
+	
+	
+	
+//	public Game(Integer idgame, java.util.Date date, String type, Competition competition, Refree refree,
+//			Stadium stadium, List<Player> players) {
+//		super();
+//		this.idgame = idgame;
+//		Date = date;
+//		this.type = type;
+//		this.competition = competition;
+//		this.refree = refree;
+//		this.stadium = stadium;
+//		this.players = players;
+//	}
+
+	
+
+
+
+	private Competition competition;
 
 	@ManyToOne
 	@JoinColumn(name = "id_competiton")
-	private Competition competition;
-
 	public Competition getCompetition() {
 		return competition;
 	}
@@ -33,22 +67,23 @@ public class Game implements Serializable {
 		this.competition = competition;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "id_refree")
+	
 	private Refree refree;
-	@ManyToOne
-	@JoinColumn(name = "id_stadium")
-	private Stadium stadium;  
+	
+//	@JoinTable(
+//	name="game_player",
+//	joinColumns = @JoinColumn(name="id_game"),
+//	inverseJoinColumns = @JoinColumn(name="id_player")
+//)
+	
 	@ManyToMany
-	@JoinTable(
-		name="game_player",
-		joinColumns = @JoinColumn(name="id_game"),
-		inverseJoinColumns = @JoinColumn(name="id_player")
-	)
-	private Collection<Player> players;
-	
+	public List<Player> getPlayers() {
+		return players;
+	}
+
+
 		
-	
+
 
 
 
@@ -59,7 +94,8 @@ public class Game implements Serializable {
 	public void setStadium(Stadium stadium) {
 		this.stadium = stadium;
 	}
-
+	@ManyToOne
+	@JoinColumn(name = "id_refree")
 	public Refree getRefree() {
 		return refree;
 	}
@@ -68,11 +104,8 @@ public class Game implements Serializable {
 		this.refree = refree;
 	}
 
-	public Collection<Player> getPlayers() {
-		return players;
-	}
 
-	public void setPlayers(Collection<Player> players) {
+	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
 
@@ -82,6 +115,8 @@ public class Game implements Serializable {
 		super();
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getIdgame() {
 		return this.idgame;
 	}

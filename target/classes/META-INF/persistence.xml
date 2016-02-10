@@ -2,19 +2,7 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="com.esprit.tft.pidev">
 	<jta-data-source>java:/tftDS</jta-data-source>
-	<class>com.esprit.tft.pidev.domain.Adminstrator</class>
-	<class>com.esprit.tft.pidev.domain.Autentificates</class>
-	<class>com.esprit.tft.pidev.domain.Club</class>
-	<class>com.esprit.tft.pidev.domain.Competition</class>
-	<class>com.esprit.tft.pidev.domain.Doctor</class>
-	<class>com.esprit.tft.pidev.domain.Game</class>
-	<class>com.esprit.tft.pidev.domain.Player</class>
-	<class>com.esprit.tft.pidev.domain.Pronostic</class>
-	<class>com.esprit.tft.pidev.domain.Refree</class>
-	<class>com.esprit.tft.pidev.domain.Session</class>
-	<class>com.esprit.tft.pidev.domain.Stadium</class>
-	<class>com.esprit.tft.pidev.domain.Test</class>
-	<class>com.esprit.tft.pidev.domain.User</class>
+	
 	<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />

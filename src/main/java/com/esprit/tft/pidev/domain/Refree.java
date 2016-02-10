@@ -17,10 +17,10 @@ public class Refree extends User implements Serializable {
 	private String competence;
 	private String type;
 	private String grade;
-	@OneToMany(mappedBy="refree")
-	private Collection<Game> games;
 	
-	@ManyToMany(mappedBy="refrees")
+	private List<Game> games;
+	
+	
 	private List<Session> sessions;
 	
 	public String getGrade() {
@@ -29,10 +29,12 @@ public class Refree extends User implements Serializable {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	public Collection<Game> getGames() {
+	
+	@OneToMany(mappedBy="refree")
+	public List<Game> getGames() {
 		return games;
 	}
-	public void setGames(Collection<Game> games) {
+	public void setGames(List<Game> games) {
 		this.games = games;
 	}
 
@@ -69,7 +71,7 @@ public class Refree extends User implements Serializable {
 	public void setGarde(String garde) {
 		this.grade = garde;
 	}
-
+	@ManyToMany(mappedBy="refrees")
 	public List<Session> getSessions() {
 		return sessions;
 	}

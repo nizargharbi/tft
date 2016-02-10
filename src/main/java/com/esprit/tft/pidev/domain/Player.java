@@ -1,9 +1,11 @@
 package com.esprit.tft.pidev.domain;
 
+
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -15,21 +17,16 @@ import javax.persistence.*;
 @DiscriminatorValue(value="player")
 public class Player extends User implements Serializable {
 
-	
+	 
 	private Integer age;
 	private String categorie;
-	@ManyToOne
-	@JoinColumn(name="id_club")
+
 	private Club club;
-	@ManyToMany(mappedBy="players")
-	private Collection<Game> games;
 	
-	public Collection<Game> getGames() {
-		return games;
-	}
-	public void setGames(Collection<Game> games) {
-		this.games = games;
-	}
+	private List<Game> games;
+	
+	@ManyToOne
+	@JoinColumn(name="id_club") 
 	public Club getClub() {
 		return club;
 	}
@@ -55,6 +52,14 @@ public class Player extends User implements Serializable {
 
 	public void setCategorie(String categorie) {
 		this.categorie = categorie;
+	}
+	 
+	@ManyToMany(mappedBy="players")
+	public List<Game> getGames() { 
+		return games;
+	}
+	public void setGames(List<Game> games) {
+		this.games = games;
 	}
    
 }

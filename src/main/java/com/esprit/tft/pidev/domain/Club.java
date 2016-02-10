@@ -3,6 +3,7 @@ package com.esprit.tft.pidev.domain;
 import java.io.Serializable;
 import java.lang.String;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -15,16 +16,18 @@ import javax.persistence.*;
 public class Club implements Serializable {
 
 	   
-	@Id
+	
 	private String idclub;
 	private String name;
-	@OneToMany(mappedBy="club")
-	private Collection<Player> players;
 	
-	public Collection<Player> getPlayers() {
+	private List<Player> players;
+	
+	
+	@OneToMany(mappedBy="club")
+	public List<Player> getPlayers() {
 		return players;
 	}
-	public void setPlayers(Collection<Player> players) {
+	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
 
@@ -32,7 +35,8 @@ public class Club implements Serializable {
 
 	public Club() {
 		super();
-	}   
+	}  
+	@Id
 	public String getIdclub() {
 		return this.idclub;
 	}

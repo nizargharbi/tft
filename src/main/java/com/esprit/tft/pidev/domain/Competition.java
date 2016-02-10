@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.Integer;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -16,16 +17,16 @@ import javax.persistence.*;
 public class Competition implements Serializable {
 
 	  
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idcompetition;
+		private Integer idcompetition;
+	
+	private List<Game> games;
+	
+	
 	@OneToMany(mappedBy="competition")
-	private Collection<Game> games;
-
-	public Collection<Game> getGames() {
+	public List<Game> getGames() {
 		return games;
 	}
-	public void setGames(Collection<Game> games) {
+	public void setGames(List<Game> games) {
 		this.games = games;
 	}
 
@@ -33,7 +34,11 @@ public class Competition implements Serializable {
 
 	public Competition() {
 		super();
-	}   
+	} 
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
 	public Integer getIdcompetition() {
 		return this.idcompetition;
 	}

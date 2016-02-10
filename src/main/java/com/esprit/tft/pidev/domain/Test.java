@@ -14,8 +14,7 @@ import javax.persistence.*;
 public class Test implements Serializable {
 
 	   
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	private Integer idtest;
 	private String refernce;
 	private String description;
@@ -23,7 +22,10 @@ public class Test implements Serializable {
 
 	public Test() {
 		super();
-	}   
+	} 
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getIdtest() {
 		return this.idtest;
 	}

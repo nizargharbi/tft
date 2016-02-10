@@ -15,18 +15,19 @@ import javax.persistence.*;
 @Table(name="t_stadium")
 public class Stadium implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	private Integer idStadium;
 	private String nameStadium;
-	@OneToMany(mappedBy="stadium")
-	private Collection<Game> games;
+//	@OneToMany(mappedBy="stadium")
+//	private Collection<Game> games;
 	
 	private static final long serialVersionUID = 1L;
 
 	public Stadium() {
 		super();
-	}   
+	}
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getIdStadium() {
 		return this.idStadium;
 	}

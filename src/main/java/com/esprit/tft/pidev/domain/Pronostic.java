@@ -14,15 +14,17 @@ import javax.persistence.*;
 public class Pronostic implements Serializable {
 
 	   
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	private Integer idpro;
 	private String results;
 	private static final long serialVersionUID = 1L;
 
 	public Pronostic() {
 		super();
-	}   
+	}  
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getId() {
 		return this.idpro;
 	}

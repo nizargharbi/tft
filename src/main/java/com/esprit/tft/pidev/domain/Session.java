@@ -17,24 +17,21 @@ import javax.persistence.*;
 public class Session implements Serializable {
 
 	   
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	private Integer idsession;
 	private String venue;
 	private String openingdate;
 	private String closingdate;
-	@ManyToMany
-	@JoinTable(
-			name="session_referee",
-			joinColumns = @JoinColumn(name="id_session"),
-			inverseJoinColumns = @JoinColumn(name="id_refree")
-		)
+
 	private List<Refree> refrees;
 	private static final long serialVersionUID = 1L;
 
 	public Session() {
 		super();
 	}   
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getIdsession() {
 		return this.idsession;
 	}
@@ -64,6 +61,12 @@ public class Session implements Serializable {
 		this.closingdate = closingdate;
 	}
 	
+	@ManyToMany
+	@JoinTable(
+			name="session_referee",
+			joinColumns = @JoinColumn(name="id_session"),
+			inverseJoinColumns = @JoinColumn(name="id_refree")
+		)
 	public List<Refree> getRefrees() {
 		return refrees;
 	}

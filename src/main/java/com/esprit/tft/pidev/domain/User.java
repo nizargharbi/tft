@@ -15,8 +15,7 @@ import javax.persistence.*;
 public class User implements Serializable {
 
 	   
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	private Integer id;
 	private String name;
 	private String email;
@@ -27,6 +26,9 @@ public class User implements Serializable {
 	public User() {
 		super();
 	}   
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getId() {
 		return this.id;
 	}
