@@ -21,6 +21,8 @@ public class User implements Serializable {
 	private String email;
 	private String password;
 	private String login;
+	private int  state=0;
+	
 	private static final long serialVersionUID = 1L;
 
 	public User() {
